@@ -1,0 +1,15 @@
+#HeaderFood h1{
+    font-size: 5vw;
+}
+#HeaderFood{
+    margin-top: 20px;
+    margin-left: 20px;
+    display: inline-grid;
+}
+#name{
+    margin-left: 30vw;
+}
+#HeaderFood img{
+    width: 12vw;
+    margin-left: 8vw;
+}

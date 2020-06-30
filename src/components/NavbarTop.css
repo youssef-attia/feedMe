@@ -1,0 +1,22 @@
+#navBar {
+  background-color: #000;
+}
+#navBar a {
+  color: #fff;
+  padding: 10px;
+  transition: 0.5s;
+}
+#navBar a:hover {
+  transform: scale(1.05);
+  color: rgb(139, 221, 132);
+  transition: 0.5s;
+}
+#navBar img {
+  width: 40px;
+  background: white;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+#toggleNav {
+  border-color: rgb(131, 131, 131);
+}
