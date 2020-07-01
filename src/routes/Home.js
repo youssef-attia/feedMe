@@ -3,6 +3,8 @@ import HeaderFood from '../components/HeaderFood';
 import ModalPost from '../components/ModalPost';
 import FoodPost from '../components/FoodPost';
 
+import {AiFillPlusCircle} from 'react-icons/ai'
+
 function Home(props) {
   return (
     <>
@@ -10,12 +12,10 @@ function Home(props) {
       <br />
       {props.user !== '' ? 
         <>
-          <div className='addPostDiv'>
-            <button id='addPost' onClick={props.addPostShow}>
-              Add Post
-            </button>
-          </div>
           <div className='posts'>
+            <div className='addPostDiv'>
+              <AiFillPlusCircle id='addPost' onClick={props.addPostShow}/>
+            </div>
             {(props.posts.length>0)?props.posts.map((post,i) => {
               return (
                 <FoodPost
@@ -28,7 +28,10 @@ function Home(props) {
                   setPosts={props.setPosts}
                   setFeed={props.setFeed}
                   username={post.username}
+                  user={props.user}
                   feed={false}
+                  likes={props.likes}
+                  setLikes={props.setLikes}
                 />
               );
             }):

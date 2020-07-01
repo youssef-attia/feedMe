@@ -24,13 +24,14 @@ function App() {
   const [userPosts, setUserPosts] = useState([]);
 
   const [feedPosts, setFeedPosts] = useState([]);
-
-  const [user, setUser] = useState("");
+//{username:"YAttia",name:"Youssef Attia"}
+  const [user, setUser] = useState('');
+  
+  const [likes, setLikes] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:5000/foods/").then((res) => {
       setFeedPosts(res.data);
-      console.log(res.data)
       setUserPosts(res.data.filter((e) => e.username === user.username));
     });
   }, [user]);
@@ -53,6 +54,8 @@ function App() {
           showAddPost={showAddPost}
           addPostShow={addPostShow}
           addPostClose={addPostClose}
+          likes={likes}
+          setLikes={setLikes}
         />
         <Feed
           path="/feed"

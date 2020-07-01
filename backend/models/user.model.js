@@ -35,7 +35,10 @@ const userSchema = new Schema({
     },
     profilePic:{
         type:String,
-    }
+    },
+    likes:{
+        type:Array,
+    },
 },{
     timestamps:true,
 })

@@ -1,6 +1,9 @@
 #navBar {
   background-color: #000;
 }
+#navBar h3{
+  font-size: 4vh !important;
+}
 #navBar a {
   color: #fff;
   padding: 10px;

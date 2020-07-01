@@ -36,13 +36,8 @@ function ModalForm(props) {
       password: SIPass,
     };
     var serverUser;
-    console.log(SIOBject);
     axios.get('http://localhost:5000/users/').then((res) => {
-      res.data.map((userEl) => {
-        if(userEl.email === SIEmail){
-          serverUser = userEl
-        }
-      });
+      serverUser = res.data.filter( userEl => userEl.email === SIEmail)[0];
       if (serverUser.password === SIOBject.password) {
         props.setUser(serverUser)
       }else{
