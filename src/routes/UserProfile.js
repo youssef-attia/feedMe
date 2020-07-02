@@ -16,7 +16,7 @@ function UserProfile(props) {
         setPosts(res.data.filter((e) => e.username === props.username));
       });
       axios.get("http://localhost:5000/users/").then((res) => {
-        setName(res.data.filter((e) => e.username === "yattia")[0].name);
+        setName(res.data.filter((e) => e.username === props.username)[0].name);
       });
     }
   }, [props.username]);
