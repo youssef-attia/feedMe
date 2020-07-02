@@ -7,6 +7,11 @@ function Feed(props) {
   const [checked, setChecked] = useState(false)
   const [liked, setLiked] = useState([])
   function handleSwitch(e) {
+    if (props.user) {
+      axios.get("http://localhost:5000/users/" + props.user._id).then((res) => {
+        setLiked(res.data.likes);
+      });
+    }
     setChecked(e.target.checked)
   }
 
