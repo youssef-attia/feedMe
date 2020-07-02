@@ -5,7 +5,7 @@ import FoodPost from '../components/FoodPost';
 
 import {AiFillPlusCircle} from 'react-icons/ai'
 
-function Home(props) {
+function Profile(props) {
   return (
     <>
       <HeaderFood user={props.user} />
@@ -52,4 +52,4 @@ function Home(props) {
   );
 }
 
-export default Home;
+export default Profile;

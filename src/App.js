@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Router } from "@reach/router";
 
-import Home from "./routes/Home.js";
+import Profile from "./routes/Profile.js";
+import UserProfile from "./routes/UserProfile.js";
+import "./routes/Profile.css";
 import Feed from "./routes/Feed.js";
 import NavbarTop from "./components/NavbarTop";
 import ModalForm from "./components/ModalForm";
-import "./routes/Home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import axios from "axios";
@@ -35,15 +36,16 @@ function App() {
       setUserPosts(res.data.filter((e) => e.username === user.username));
     });
   }, [user]);
+  
 
   return (
     <>
       <NavbarTop popup={handleShow} user={user} setUser={setUser} />
       <ModalForm show={show} handleClose={handleClose} setUser={setUser} />
       <Router>
-        <Home
+        <Profile
           exact
-          path="/"
+          path="/profile"
           user={user}
           show={show}
           handleClose={handleClose}
@@ -58,9 +60,15 @@ function App() {
           setLikes={setLikes}
         />
         <Feed
-          path="/feed"
+          exact
+          path="/"
           posts={feedPosts}
           setPosts={setFeedPosts}
+          user={user}
+        />
+        <UserProfile
+          exact
+          path="users/:username"
           user={user}
         />
       </Router>

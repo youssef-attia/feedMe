@@ -11,15 +11,15 @@ function NavbarTop(props) {
   return (
       <div>
         <Navbar className='navbar-dark' id='navBar' expand='lg'>
-        <Link to="/feed"><h3><img src={logo} alt='logo'/>FeedMe</h3></Link>
+        <Link to="/"><h3><img src={logo} alt='logo'/>FeedMe</h3></Link>
           <Navbar.Toggle id='toggleNav' aria-controls='basic-navbar-nav'/>
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ml-auto'>
-              <Link to="/feed">Feed</Link>
+              <Link to="/">Feed</Link>
               {(props.user!=='')?
               <>
-                <Link to="/">Profile</Link>
-                <Link onClick={()=>props.setUser('')} to="/feed">Sign Out</Link>
+                <Link to="/profile">Profile</Link>
+                <Link onClick={()=>props.setUser('')} to="/">Sign Out</Link>
               </>:
               // eslint-disable-next-line
               <a onClick={props.popup} >Sign In</a>

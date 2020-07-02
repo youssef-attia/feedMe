@@ -50,7 +50,7 @@ function ModalForm(props) {
 
   return (
     <Modal show={props.show} onHide={props.handleClose}>
-      <Modal.Body>
+      <Modal.Body className="modalBody">
         <div className='form'>
           <form className='register-form' onSubmit={handleSUSubmit}>
             <input
@@ -58,7 +58,7 @@ function ModalForm(props) {
               type='text'
               placeholder='username'
               onChange={(e) => {
-                setSUUName(e.target.value);
+                setSUUName(e.target.value.toLowerCase());
               }}
             />
             <input
@@ -91,7 +91,7 @@ function ModalForm(props) {
             <input
               id='signInEmail'
               type='text'
-              placeholder='username'
+              placeholder='Email'
               onChange={(e) => {
                 setSIEmail(e.target.value);
               }}
