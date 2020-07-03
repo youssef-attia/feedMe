@@ -3,6 +3,8 @@ import { Link } from "@reach/router";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
+import { FaComments } from "react-icons/fa";
+
 import "./FoodPost.css";
 
 import axios from "axios";
@@ -17,18 +19,15 @@ function FoodPost(props) {
       });
       props.setPosts(newPosts);
     });
-    console.log("delete", props.id);
   }
   function likePost() {
     setFav(true);
-    console.log(props.id, "liked");
     axios.get("http://localhost:5000/users/" + props.user._id).then((res) => {
-      axios
-        .post("http://localhost:5000/users/update/" + props.user._id, {
+        axios.post("http://localhost:5000/users/updateLikes/" + props.user._id, {
           likes: [...res.data.likes, props.id],
         })
         .then((res2) => {
-          console.log(res2.data.likes);
+          setFav(res2.data.likes);
         });
     });
   }
@@ -39,7 +38,7 @@ function FoodPost(props) {
       const remLike = res.data.likes;
       remLike.splice(res.data.likes.indexOf(props.id), 1);
       axios
-        .post("http://localhost:5000/users/update/" + props.user._id, {
+        .post("http://localhost:5000/users/updateLikes/" + props.user._id, {
           likes: remLike,
         })
         .then((res2) => {
@@ -65,28 +64,15 @@ function FoodPost(props) {
         <p>{props.description}</p>
         <div className="extraInfo">
           <Link to={'/users/'+props.username}><p className="poster">@{props.username}</p></Link>
-          {props.user ? (
+          <FaComments className="postIcons" id="comments"/>
+          {props.user ?
             <div className="postIconGroup">
-              {fav ? (
+              {fav ? 
                 <AiFillHeart className="postIcons heart" onClick={unlikePost} />
-              ) : (
-                <AiOutlineHeart
-                  className="postIcons heart"
-                  onClick={likePost}
-                />
-              )}
-              {props.feed ? (
-                ""
-              ) : (
-                <TiDeleteOutline
-                  className="postIcons delete"
-                  onClick={handleDelete}
-                />
-              )}
-            </div>
-          ) : (
-            ""
-          )}
+                :<AiOutlineHeart className="postIcons heart" onClick={likePost}/>}
+              {props.feed ? "":<TiDeleteOutline className="postIcons delete" onClick={handleDelete}/>}
+            </div>:""
+          }
         </div>
       </div>
     </div>

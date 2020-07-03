@@ -22,8 +22,18 @@ router.route("/add").post((req, res) => {
     .then(() => res.json("User added!"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
-router.route('/update/:id').post(function(req,res){
+router.route('/updateLikes/:id').post(function(req,res){
   User.findByIdAndUpdate(req.params.id,{likes: req.body.likes},{new:true}, (err, result)=>{
+      if(err){
+          res.send(err)
+      }
+      else{
+          res.send(result)
+      }
+  })
+})
+router.route('/updateProfilePic/:id').post(function(req,res){
+  User.findByIdAndUpdate(req.params.id,{profilePic: req.body.profilePic},{new:true}, (err, result)=>{
       if(err){
           res.send(err)
       }

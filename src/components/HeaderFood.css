@@ -21,9 +21,11 @@
   margin-top: 10px;
 }
 #HeaderFood img {
+  object-fit: cover;
   width: 12vw;
   height: 12vw;
   margin-left: -8vw;
+  border-radius: 50%;
 }
 .handleHolder {
   display: flex;

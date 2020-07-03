@@ -8,7 +8,7 @@ import {AiFillPlusCircle} from 'react-icons/ai'
 function Profile(props) {
   return (
     <>
-      <HeaderFood user={props.user} />
+      <HeaderFood user={props.user} setUser={props.setUser}/>
       <br />
       {props.user !== '' ? 
         <>
